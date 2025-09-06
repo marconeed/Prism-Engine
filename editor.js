@@ -112,7 +112,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 sessionStorage.setItem('levelDataForPreview', jsonString);
                 
                 // 3. Abre o jogo numa nova aba.
-                window.open('index.html', '_blank');
+                window.open('index2.html', '_blank');
             });
 
             const openButton = document.getElementById('openButton');
