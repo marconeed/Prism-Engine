@@ -1,0 +1,140 @@
+{
+    "settings": {
+        "width": 800,
+        "height": 600,
+        "backgroundColor": 2236962
+    },
+    "ui": {
+        "scoreLabel": {
+            "type": "text",
+            "text": "Score: {score}",
+            "style": {
+                "position": "absolute",
+                "top": "20px",
+                "left": "20px",
+                "color": "white",
+                "fontSize": "24px",
+                "fontFamily": "Arial"
+            }
+        }
+    },
+    "sceneObjects": [
+        {
+            "id": "player",
+            "asset": "assets/player.png",
+            "position": {
+                "x": 400,
+                "y": 500
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "scale": {
+                "x": 1,
+                "y": 1
+            },
+            "rotation": 0,
+            "collision": {
+                "tag": "player"
+            },
+            "behaviors": [
+                {
+                    "type": "keyboardMovement",
+                    "speed": 5
+                },
+                {
+                    "type": "screenBounds"
+                },
+                {
+                    "type": "shooter",
+                    "triggerKey": "Space",
+                    "cooldown": 0.25,
+                    "blueprintId": "playerBullet"
+                }
+            ]
+        }
+    ],
+    "blueprints": {
+        "enemy": {
+            "asset": "assets/enemy.png",
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "scale": {
+                "x": 1,
+                "y": 1
+            },
+            "rotation": 0,
+            "collision": {
+                "tag": "enemy",
+                "onDestroy": {
+                    "create": "explosion"
+                }
+            },
+            "behaviors": [
+                {
+                    "type": "patrol",
+                    "speed": 2,
+                    "distance": 100
+                },
+                {
+                    "type": "screenBounds"
+                }
+            ]
+        },
+        "playerBullet": {
+            "asset": "assets/bullet.png",
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "scale": {
+                "x": 1,
+                "y": 1
+            },
+            "rotation": 0,
+            "collision": {
+                "tag": "playerBullet",
+                "hits": [
+                    "enemy"
+                ]
+            },
+            "behaviors": [
+                {
+                    "type": "moveInDirection",
+                    "speed": 10,
+                    "angle": -90
+                },
+                {
+                    "type": "destroyOnScreenExit"
+                }
+            ]
+        },
+        "explosion": {
+            "animationFromFrames": {
+                "basePath": "assets/fire",
+                "frameCount": 4,
+                "padLength": 2,
+                "extension": ".png"
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "scale": {
+                "x": 1,
+                "y": 1
+            },
+            "rotation": 0,
+            "behaviors": [
+                {
+                    "type": "animation",
+                    "animationSpeed": 0.5,
+                    "loop": false
+                }
+            ]
+        }
+    }
+}
