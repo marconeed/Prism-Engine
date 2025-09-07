@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Editor de Nível v0.1</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.json">
     <style>
         body { font-family: Arial, sans-serif; margin: 0; background-color: #333; color: #eee; display: flex; height: 100vh; overflow: hidden; }
         #editor-ui-container { position: absolute; top: 20px; left: 20px; pointer-events: none; z-index: 10; font-family: Arial; }
@@ -60,6 +61,18 @@
     <script src="RotateCommand.js"></script>
     <script src="CreateObjectCommand.js"></script>
     <script src="DeleteObjectCommand.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('Service Worker do Prism Engine registado com sucesso:', registration.scope);
+                }).catch(error => {
+                    console.log('Falha ao registar o Service Worker:', error);
+                });
+            });
+        }
+    </script>
     
     <script src="editor.js"></script>
 </body>
