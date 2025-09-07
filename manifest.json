@@ -2,7 +2,7 @@
     "name": "Prism Engine Editor",
     "short_name": "Prism Editor",
     "description": "Um editor de níveis e motor de jogo 2D construído na web.",
-    "start_url": "./editor.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#2a2a2a",
     "theme_color": "#444444",
