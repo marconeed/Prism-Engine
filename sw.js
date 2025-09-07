@@ -3,7 +3,7 @@ const CACHE_NAME = 'prism-engine-editor-v1';
 // Lista de todos os ficheiros essenciais para a nossa aplicação funcionar offline.
 const urlsToCache = [
     '/',
-    'editor.html',
+    'index2.html',
     'index.html',
     'level1.json',
     
